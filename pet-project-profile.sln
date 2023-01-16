@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Domain", "Pet.Project.Profile.Domain\Pet.Project.Profile.Domain.csproj", "{17ABBCB7-32C5-4FC8-9EDB-857CB5BA0DB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Infraestructure", "Pet.Project.Profile.Infraestructure\Pet.Project.Profile.Infraestructure.csproj", "{39318705-9ABE-41A0-93C6-28BFC313CF64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Infrastructure", "Pet.Project.Profile.Infraestructure\Pet.Project.Profile.Infrastructure.csproj", "{39318705-9ABE-41A0-93C6-28BFC313CF64}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Api", "Pet.Project.Profile.Api\Pet.Project.Profile.Api.csproj", "{9FE34641-1B09-49B3-B1C5-D191938F5FD6}"
 EndProject
@@ -15,11 +15,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Api.Uni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Domain.UnitTests", "Pet.Project.Profile.Domain.UnitTests\Pet.Project.Profile.Domain.UnitTests.csproj", "{40729647-1A22-413F-9250-F0E75689A6BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Infraestructure.UnitTests", "Pet.Project.Profile.Infraestructure.UnitTests\Pet.Project.Profile.Infraestructure.UnitTests.csproj", "{86FB752B-FA76-44C2-A920-51F83DBA88B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Project.Profile.Infrastructure.UnitTests", "Pet.Project.Profile.Infraestructure.UnitTests\Pet.Project.Profile.Infrastructure.UnitTests.csproj", "{86FB752B-FA76-44C2-A920-51F83DBA88B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CF3B800-6A90-42DC-AA6B-2A8CD1CB3AA1}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{F54A5D3F-9645-4FAB-B2B7-0C2E9238A1F6}"
+	ProjectSection(SolutionItems) = preProject
+		Rules.ruleset = Rules.ruleset
 	EndProjectSection
 EndProject
 Global

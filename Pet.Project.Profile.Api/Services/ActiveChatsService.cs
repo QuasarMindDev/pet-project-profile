@@ -17,11 +17,11 @@ public class ActiveChatsService : IActiveChatsService
     public async Task AddActiveChatAsync(string email, string chatId)
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
-        var activeChat = new ActiveChat(){Id = chatId};
+        var activeChat = new ActiveChat() { Id = chatId };
 
         if (profile.ActiveChats is null)
         {
-            profile.ActiveChats = new List<ActiveChat>{activeChat};
+            profile.ActiveChats = new List<ActiveChat> { activeChat };
         }
         else
         {
@@ -31,16 +31,16 @@ public class ActiveChatsService : IActiveChatsService
         await _database.UpdateAsync(profile);
     }
 
+    public async Task<List<string>?> GetActiveChatsAsync(string email)
+    {
+        var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
+        return profile.ActiveChats?.Select(x => x.Id).ToList();
+    }
+
     public async Task RemoveActiveChatAsync(string email, string chatId)
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
         profile.ActiveChats?.RemoveAll(x => x.Id == chatId);
         await _database.UpdateAsync(profile);
-    }
-
-    public async Task<List<string>?> GetActiveChatsAsync(string email)
-    {
-        var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
-        return profile.ActiveChats?.Select(x => x.Id).ToList();
     }
 }

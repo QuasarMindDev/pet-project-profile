@@ -23,7 +23,7 @@ public class AccessService : IAccessService
     public async Task ModifyFailedCountAsync(string email, bool reset)
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
-        profile.Access.FailedCount =  reset ? 0 : profile.Access.FailedCount + 1;
+        profile.Access.FailedCount = reset ? 0 : profile.Access.FailedCount + 1;
         await _database.UpdateAsync(profile);
     }
 

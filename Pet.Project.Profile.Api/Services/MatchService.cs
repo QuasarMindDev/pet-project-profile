@@ -17,10 +17,10 @@ public class MatchService : IMatchService
     public async Task AddMatchAsync(string email, string postId)
     {
         var profile = await _database.GetSingleAsync(x => x.Email.EmailAddress == email);
-        var match = new Match(){PostId = postId};
+        var match = new Match() { PostId = postId };
         if (profile.Match is null)
         {
-            profile.Match = new List<Match>{match};
+            profile.Match = new List<Match> { match };
         }
         else
         {

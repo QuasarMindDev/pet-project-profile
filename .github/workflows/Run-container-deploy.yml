@@ -1,0 +1,21 @@
+name: Run Container Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_container:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      with:
+        repository: CJN-Team/pet-project-services
+        ref: main
+
+    - name: Run Actions Pet Services
+      uses: ./.github/actions/Deploy-containers-group
+      with:
+        app_name: ${{ secrets.APP_NAME }}
+        containers: ${{ secrets.CONTAINERS }}

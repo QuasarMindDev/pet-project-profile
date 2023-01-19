@@ -5,7 +5,7 @@ using Pet.Project.Profile.Infrastructure.Database.Services;
 
 namespace Pet.Project.Profile.Api.Services;
 
-public class PostService: IPostService
+public class PostService : IPostService
 {
     private readonly IUserProfileRepository _database;
 
@@ -17,10 +17,10 @@ public class PostService: IPostService
     public async Task AddPostAsync(string email, string postId)
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
-        var post = new Post(){PostId = postId};
+        var post = new Post() { PostId = postId };
         if (profile.Post is null)
         {
-            profile.Post = new List<Post>{post};
+            profile.Post = new List<Post> { post };
         }
         else
         {

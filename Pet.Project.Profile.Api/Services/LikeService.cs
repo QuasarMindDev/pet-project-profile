@@ -17,10 +17,10 @@ public class LikeService : ILikeService
     public async Task AddLikeAsync(string email, string postId)
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
-        var like = new Like(){PostId = postId, Status = false};
+        var like = new Like() { PostId = postId, Status = false };
         if (profile.Like is null)
         {
-            profile.Like = new List<Like>{like};
+            profile.Like = new List<Like> { like };
         }
         else
         {

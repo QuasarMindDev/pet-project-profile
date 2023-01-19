@@ -1,11 +1,16 @@
-using Pet.Project.Profile.Domain.Database.Enums;
+using Pet.Project.Profile.Api.Dtos.Profile;
 
 namespace Pet.Project.Profile.Api.Services.Interfaces;
 
 public interface IProfileService
 {
-    public Task ModifyGenderAsync(string email, Gender gender);
-    public Task ModifyImagePathAsync(string email, string imagePath);
-    public Task ModifyBirthDateAsync(string email, DateTime birthDate);
-    public Task ModifySummaryAsync(string email, string summary);
+    public Task<Domain.Database.Models.Profile> GetProfileAsync(string email);
+
+    public Task ModifyBirthDateAsync(BirthDateDto birthDateDto);
+
+    public Task ModifyGenderAsync(GenderDto genderDto);
+
+    public Task ModifyImagePathAsync(ImagePathDto imagePathDto);
+
+    public Task ModifySummaryAsync(SummaryDto summaryDto);
 }

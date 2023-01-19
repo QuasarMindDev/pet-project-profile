@@ -7,7 +7,7 @@ namespace Pet.Project.Profile.Domain.Database.Models
         public DateTime Created { get; set; } = DateTime.Now;
 
         [BsonId]
-        public string PostId { get; set; }  = Guid.NewGuid().ToString();
+        public string PostId { get; set; } = Guid.NewGuid().ToString();
 
         public bool Status { get; set; }
     }

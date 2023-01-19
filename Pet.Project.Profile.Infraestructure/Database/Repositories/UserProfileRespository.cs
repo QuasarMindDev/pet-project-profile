@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using Pet.Project.Profile.Domain.Database;
 using Pet.Project.Profile.Domain.Database.Models;
+using Pet.Project.Profile.Domain.Extensions;
 using Pet.Project.Profile.Domain.Models;
 using System.Linq.Expressions;
 
@@ -23,12 +24,15 @@ namespace Pet.Project.Profile.Infrastructure.Database.Repositories
 
         public async Task DeleteAsync(Expression<Func<UserProfile, bool>> predicate)
         {
-           await _profiles.DeleteOneAsync(predicate);
+            await _profiles.DeleteOneAsync(predicate);
         }
 
-        public IQueryable<UserProfile> GetAll()
+        public IQueryable<UserProfile> GetAll(PagingExtension pagingExtensions)
         {
-            return _profiles.AsQueryable();
+            return _profiles.AsQueryable()
+                .Skip((pagingExtensions.PageNumber - 1) * pagingExtensions.PageSize)
+                .Take(pagingExtensions.PageSize)
+                .AsQueryable();
         }
 
         public async Task<UserProfile> GetSingleAsync(Expression<Func<UserProfile, bool>> predicate)
@@ -39,7 +43,8 @@ namespace Pet.Project.Profile.Infrastructure.Database.Repositories
 
         public Task<UserProfile> UpdateAsync(UserProfile profile)
         {
-            return  _profiles.FindOneAndReplaceAsync(x => x.Email!.EmailAddress == profile.Email!.EmailAddress, profile);
+            profile.LastModified = DateTime.Now;
+            return _profiles.FindOneAndReplaceAsync(x => x.Email!.EmailAddress == profile.Email!.EmailAddress, profile);
         }
     }
 }

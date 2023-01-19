@@ -20,7 +20,7 @@ public class PreferencesService : IPreferencesService
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
         if (profile.Preferences.Category is null)
         {
-            profile.Preferences.Category = new List<Category>{category};
+            profile.Preferences.Category = new List<Category> { category };
         }
         else
         {
@@ -35,7 +35,7 @@ public class PreferencesService : IPreferencesService
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
         if (profile.Preferences.Gender is null)
         {
-            profile.Preferences.Gender = new List<Gender>{gender};
+            profile.Preferences.Gender = new List<Gender> { gender };
         }
         else
         {

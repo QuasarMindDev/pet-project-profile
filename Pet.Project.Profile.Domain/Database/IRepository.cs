@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Pet.Project.Profile.Domain.Extensions;
+using System.Linq.Expressions;
 
 namespace Pet.Project.Profile.Domain.Database
 {
@@ -8,7 +9,7 @@ namespace Pet.Project.Profile.Domain.Database
 
         Task DeleteAsync(Expression<Func<T, bool>> predicate);
 
-        IQueryable<T> GetAll();
+        IQueryable<T> GetAll(PagingExtension pagingExtensions);
 
         Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate);
 

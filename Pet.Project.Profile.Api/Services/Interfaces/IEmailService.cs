@@ -6,7 +6,7 @@ public interface IEmailService
 {
     public Task ConfirmEmailAsync(string email);
 
-    public Task ModifyEmailAddressAsync(string email, string newEmail);
-
     public Task<Email> GetEmailInfoAsync(string email);
+
+    public Task ModifyEmailAddressAsync(string email, string newEmail);
 }

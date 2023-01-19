@@ -5,7 +5,7 @@ using Pet.Project.Profile.Infrastructure.Database.Services;
 
 namespace Pet.Project.Profile.Api.Services;
 
-public class LocationService: ILocationService
+public class LocationService : ILocationService
 {
     private readonly IUserProfileRepository _database;
 

@@ -30,7 +30,8 @@ public class EmailService : IEmailService
     {
         var profile = await _database.GetSingleAsync(x => x.Email!.EmailAddress == email);
 
-        if(await _database.GetSingleAsync(x => x.Email!.EmailAddress == newEmail) == null){
+        if (await _database.GetSingleAsync(x => x.Email!.EmailAddress == newEmail) == null)
+        {
             throw new SystemException("Email already exists");
         }
 

@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["Pet.Project.Profile.Api/Pet.Project.Profile.Api.csproj", "Pet.Project.Profile.Api/"]
 COPY ["Pet.Project.Profile.Domain/Pet.Project.Profile.Domain.csproj", "Pet.Project.Profile.Domain/"]
-COPY ["Pet.Project.Profile.Infraestructure/Pet.Project.Profile.Infraestructure.csproj", "Pet.Project.Profile.Infraestructure/"]
+COPY ["Pet.Project.Profile.Infraestructure/Pet.Project.Profile.Infrastructure.csproj", "Pet.Project.Profile.Infraestructure/"]
 RUN dotnet restore "Pet.Project.Profile.Api/Pet.Project.Profile.Api.csproj"
 COPY . .
 WORKDIR "/src/Pet.Project.Profile.Api"

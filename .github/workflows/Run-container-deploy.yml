@@ -7,10 +7,45 @@ jobs:
   deploy_container:
     runs-on: ubuntu-latest
     steps:
-    - name: Repository Dispatch
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Read JSONs
+      id: set_var
+      run: |
+        echo "SWAGGER=$(jq -c . < ./Pet.Project.Profile.Api/OpenAPI/ProfileSwagger.json)" >> $GITHUB_ENV
+
+    - name: Set environment specific variables
+      uses: jnus/json-variables@v1.0
+      with:
+        scope: deploy
+        configFile: './Variables/Actions.json'
+        secrets: '${{ toJson(secrets) }}'
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: ${{ env.DOCKER_HUB_IMAGE }}:latest
+        provenance: false
+
+    - name: Dispatch Repository
       uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ secrets.TOKEN }}
-        repository: CJN-Team/pet-project-services
+        repository: ${{ env.REPOSITORY }}
         event-type: create-container
-        client-payload: '{"app_name": "${{ vars.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }} }'
+        client-payload: '{"app_name": "${{ env.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }}, "app_name_api": "${{ env.APP_NAME_API }}", "app_name_display_name": "${{ env.APP_NAME_DISPLAY_NAME }}", "app_description": "${{ env.APP_DESCRIPTION }}", "app_path": "${{ env.APP_PATH }}", "content": ${{ toJson(env.SWAGGER) }} }'

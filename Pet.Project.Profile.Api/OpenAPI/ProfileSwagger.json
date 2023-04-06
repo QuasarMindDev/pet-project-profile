@@ -1,0 +1,616 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Pet.Project.Profile.Api",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/Profile": {
+        "get": {
+          "tags": [
+            "Profile"
+          ],
+          "parameters": [
+            {
+              "name": "email",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Profile/birthDate": {
+        "put": {
+          "tags": [
+            "Profile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BirthDateDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BirthDateDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BirthDateDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Profile/gender": {
+        "put": {
+          "tags": [
+            "Profile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Profile/imagePath": {
+        "put": {
+          "tags": [
+            "Profile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImagePathDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImagePathDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImagePathDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Profile/summary": {
+        "put": {
+          "tags": [
+            "Profile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SummaryDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/UserProfile": {
+        "post": {
+          "tags": [
+            "UserProfile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "UserProfile"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "UserProfile"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/UserProfile/{email}": {
+        "get": {
+          "tags": [
+            "UserProfile"
+          ],
+          "parameters": [
+            {
+              "name": "email",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Access": {
+          "type": "object",
+          "properties": {
+            "auth0ID": {
+              "type": "string",
+              "nullable": true
+            },
+            "failedCount": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "ActiveChat": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "BirthDateDto": {
+          "type": "object",
+          "properties": {
+            "birthDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "email": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Category": {
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "Configuration": {
+          "type": "object",
+          "properties": {
+            "darkTheme": {
+              "type": "boolean"
+            },
+            "font": {
+              "type": "string",
+              "nullable": true
+            },
+            "fontSize": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "settings": {
+              "$ref": "#/components/schemas/NotificationsSettings"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Email": {
+          "required": [
+            "emailAddress"
+          ],
+          "type": "object",
+          "properties": {
+            "confirmed": {
+              "type": "boolean"
+            },
+            "emailAddress": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Gender": {
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "GenderDto": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "gender": {
+              "$ref": "#/components/schemas/Gender"
+            }
+          },
+          "additionalProperties": false
+        },
+        "ImagePathDto": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "imagePath": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Like": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "postId": {
+              "type": "string",
+              "nullable": true
+            },
+            "status": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Location": {
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "nullable": true
+            },
+            "city": {
+              "type": "string",
+              "nullable": true
+            },
+            "country": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Match": {
+          "type": "object",
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "postId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "NotificationsSettings": {
+          "type": "object",
+          "properties": {
+            "messagesOnly": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "Phone": {
+          "type": "object",
+          "properties": {
+            "confirmed": {
+              "type": "boolean"
+            },
+            "number": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Post": {
+          "type": "object",
+          "properties": {
+            "postId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Preferences": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "nullable": true
+            },
+            "distance": {
+              "type": "number",
+              "format": "double"
+            },
+            "gender": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Gender"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Profile": {
+          "type": "object",
+          "properties": {
+            "birthDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "gender": {
+              "$ref": "#/components/schemas/Gender"
+            },
+            "imagePath": {
+              "type": "string",
+              "nullable": true
+            },
+            "summary": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "Reports": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "reportId": {
+              "type": "string",
+              "nullable": true
+            },
+            "summary": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SummaryDto": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "summary": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "UserProfile": {
+          "type": "object",
+          "properties": {
+            "access": {
+              "$ref": "#/components/schemas/Access"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "activeChats": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ActiveChat"
+              },
+              "nullable": true
+            },
+            "configuration": {
+              "$ref": "#/components/schemas/Configuration"
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "email": {
+              "$ref": "#/components/schemas/Email"
+            },
+            "lastAccess": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastModified": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "like": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Like"
+              },
+              "nullable": true
+            },
+            "location": {
+              "$ref": "#/components/schemas/Location"
+            },
+            "match": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Match"
+              },
+              "nullable": true
+            },
+            "phone": {
+              "$ref": "#/components/schemas/Phone"
+            },
+            "post": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Post"
+              },
+              "nullable": true
+            },
+            "preferences": {
+              "$ref": "#/components/schemas/Preferences"
+            },
+            "profile": {
+              "$ref": "#/components/schemas/Profile"
+            },
+            "reports": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Reports"
+              },
+              "nullable": true
+            },
+            "userId": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }

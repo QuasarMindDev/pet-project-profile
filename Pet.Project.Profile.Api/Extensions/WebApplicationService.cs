@@ -9,7 +9,8 @@
                 application.UseSwagger();
                 application.UseSwaggerUI();
             }
-
+            application.UseAuthentication();
+            application.UseAuthorization();
             application.UseHttpsRedirection();
             application.MapControllers();
             return application;

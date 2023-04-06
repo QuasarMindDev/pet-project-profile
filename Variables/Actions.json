@@ -1,0 +1,67 @@
+{
+    "Variables": [
+      {
+        "Name": "APP_DESCRIPTION",
+        "Value": "Profile Pet App Service",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "APP_NAME",
+        "Value": "pet-app-profile-cg",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "APP_NAME_API",
+        "Value": "pet-app-profile-api",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "APP_NAME_DISPLAY_NAME",
+        "Value": "Pet App Profile",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "APP_PATH",
+        "Value": "profile",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "DOCKER_HUB_IMAGE",
+        "Value": "petprojectapp/pet-project-profile",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      },
+      {
+        "Name": "REPOSITORY",
+        "Value": "CJN-Team/pet-project-services",
+        "Scope": {
+            "Environment": [
+              "Deploy"
+            ]
+        }
+      }
+    ]
+}

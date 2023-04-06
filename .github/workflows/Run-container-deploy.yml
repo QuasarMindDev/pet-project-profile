@@ -7,10 +7,10 @@ jobs:
   deploy_container:
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.TOKEN }}
-          repository: CJN-Team/pet-project-services
-          event-type: create-container
-          client-payload: '{"app_name": "${{ vars.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }} }'
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.TOKEN }}
+        repository: CJN-Team/pet-project-services
+        event-type: create-container
+        client-payload: '{"app_name": "${{ vars.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }} }'

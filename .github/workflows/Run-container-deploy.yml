@@ -6,12 +6,11 @@ on:
 jobs:
   deploy_container:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-    - name: Deploy containers group
-      uses: CJN-Team/pet-project-services/.github/Deploy-containers-group
-      with:
-        app_name: ${{ secrets.APP_NAME }}
-        containers: ${{ secrets.CONTAINERS }}
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+          repository: CJN-Team/pet-project-services
+          event-type: create-container
+          client-payload: '{"app_name": "${{ vars.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }} }'

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Pet.Project.Profile.Api.Services.Interfaces;
 using Pet.Project.Profile.Domain.Database.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pet.Project.Profile.Api.Controllers
 {
@@ -18,6 +19,7 @@ namespace Pet.Project.Profile.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateUserProfileAsync(UserProfile userProfile)
         {
             try
@@ -40,6 +42,7 @@ namespace Pet.Project.Profile.Api.Controllers
         }
 
         [HttpGet("{email}")]
+        [Authorize]
         public async Task<IActionResult> GetUserProfileAsync(string email)
         {
             try
@@ -61,6 +64,7 @@ namespace Pet.Project.Profile.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetUsersProfile()
         {
             try
@@ -82,6 +86,7 @@ namespace Pet.Project.Profile.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> ModifyUserProfileAsync(UserProfile userProfile)
         {
             try

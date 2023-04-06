@@ -1,4 +1,4 @@
-name: Run Container Deploy
+name: Run Container Destroy
 
 on:
   workflow_dispatch:
@@ -12,5 +12,5 @@ jobs:
       with:
         token: ${{ secrets.TOKEN }}
         repository: CJN-Team/pet-project-services
-        event-type: create-container
-        client-payload: '{"app_name": "${{ vars.APP_NAME }}", "containers": ${{ toJson(vars.CONTAINERS) }} }'
+        event-type: destroy-container
+        client-payload: '{"app_name": "${{ vars.APP_NAME }}"}} }'

@@ -11,11 +11,8 @@ namespace Pet.Project.Profile.Api.Extensions
         {
             services.AddInfrastructureServices(configuration);
             services.AddProfileServices();
+            services.AddAuth0Services(configuration);
             services.ConfigureCors();
-            var authority = configuration["Auth0:Domain"];
-            var audience = configuration["Auth0:Audience"];
-            services.AddAuth0Authentication(authority, audience);
-            services.AddAuth0Authorization(authority);
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
@@ -37,6 +34,16 @@ namespace Pet.Project.Profile.Api.Extensions
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<IReportsService, ReportsService>();
             services.AddScoped<IUserProfileService, UserProfileService>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddAuth0Services(this IServiceCollection services, IConfiguration configuration)
+        {
+            var authority = configuration["Auth0:Domain"];
+            var audience = configuration["Auth0:Audience"];
+            services.AddAuth0Authentication(authority, audience);
+            services.AddAuth0Authorization(authority);
 
             return services;
         }
